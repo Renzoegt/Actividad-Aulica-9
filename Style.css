@@ -1,0 +1,207 @@
+body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+
+    /* Navbar */
+    nav {
+        background-color: #111827;
+        color: white;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between; /* logo on the left, menu on the right */
+        align-items: center;            /* vertically center everything */
+        position: sticky;               /* stick to top */
+        top: 0;                         /* position at the top */
+        z-index: 1000;                  /* make sure it stays above other elements */
+    }
+
+    nav h1 {
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav ul li {
+      display: inline;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #60a5fa;
+    }
+
+    /* Logo */
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo img {
+      display: block;
+    }
+    .logo h1 {
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }   
+
+    /* Top Collections Section */
+    .collections {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .collections h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .column {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .ind-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .individual-column {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: #4b5563;
+      color: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease, background 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      background: #374151;
+    }
+
+    .card img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin: 1rem auto 0.5rem;
+      display: block;
+      background: white;
+      padding: 5px;
+      object-fit: cover;
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      margin: 0.5rem 0;
+    }
+
+    .card p {
+      background: #1f2937;
+      margin: 0;
+      padding: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .card a {
+      color: inherit;
+      text-decoration: none;
+      display: block;
+      padding: 1rem;
+    }
+    footer {
+    background: #111827;
+    color: white;
+    padding: 3rem 0 1.5rem;
+    margin-top: 4rem;
+    text-align: center;
+}
+
+  /* Estilo para la imagen de la tabla de la actividad */
+  table td img {
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  /* Estilo para la sección de login */
+.login-container {
+  max-width: 350px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+.login-container h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  color: #111827;
+}
+
+.login-container label {
+  display: block;
+  text-align: left;
+  margin: 0.5rem 0 0.2rem;
+  font-weight: bold;
+}
+
+.login-container input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.login-container button {
+  width: 100%;
+  padding: 10px;
+  background: #111827;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.login-container button:hover {
+  background: #374151;
+}
