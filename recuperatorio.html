@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperatorio - AA9</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        /* Estilos del encabezado principal */
+        .encabezado {
+            background-color: #2c2c2c;
+            color: white;
+            padding: 15px 0;
+        }
+
+        .contenedor-encabezado {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        /* Estilos del logo y eslogan */
+        .seccion-logo h1 {
+            font-size: 2.5em;
+            font-weight: normal;
+            margin-bottom: 5px;
+        }
+
+        .seccion-logo p {
+            font-size: 0.9em;
+            color: #ccc;
+            font-style: italic;
+        }
+
+        /* Estilos del menú de navegación */
+        .menu-navegacion {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .menu-navegacion li a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: color 0.3s;
+        }
+
+        .menu-navegacion li a:hover,
+        .menu-navegacion li a.activo {
+            color: #b8d432;
+        }
+
+        /* Línea separadora verde, lo converti en una clase separada porque no pude hacerlo con bottom-border */
+        .linea-separadora {
+            height: 4px;
+            background-color: #b8d432;
+        }
+
+        /* Sección hero principal*/
+        .seccion-hero {
+            background-color: #666;
+            color: white;
+            padding: 40px 0;
+        }
+
+        .contenedor-hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            padding: 0 20px;
+        }
+
+        /* Imagen destacada del hero */
+        .imagen-hero {
+            flex: 1;
+            max-width: 500px;
+        }
+
+        .imagen-hero img {
+            width: 100%;
+            height: auto;
+            border: 8px solid white;
+            border-radius: 5px;
+        }
+
+        /* Contenido de texto del hero */
+        .contenido-hero {
+            flex: 1;
+        }
+
+        .contenido-hero h2 {
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            font-weight: normal;
+            line-height: 1.3;
+        }
+
+        .contenido-hero p {
+            font-size: 1.1em;
+            margin-bottom: 25px;
+            color: #ddd;
+            line-height: 1.5;
+        }
+
+        /* Botón de "Leer más" */
+        .boton-leer-mas {
+            background-color: #b8d432;
+            color: #333;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 3px;
+            font-weight: bold;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+
+        .boton-leer-mas:hover {
+            background-color: #a5c12a;
+        }
+
+        /* Contenedor principal del contenido */
+        .contenedor-principal {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 30px;
+            padding: 40px 20px;
+            background-color: white;
+        }
+
+        /* Contenido principal */
+        .contenido-principal {
+            flex: 2;
+        }
+
+        .contenido-principal h3 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .contenido-principal p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        /* Lista con viñetas */
+        .lista-contenido {
+            margin: 20px 0;
+            padding-left: 20px;
+        }
+
+        .lista-contenido li {
+            margin-bottom: 15px;
+            color: #666;
+            line-height: 1.6;
+            list-style-type: square;
+        }
+
+        /* Cita destacada */
+        .caja-cita {
+            background-color: #f0f8e8;
+            border-left: 4px solid #b8d432;
+            padding: 20px;
+            margin: 25px 0;
+            font-style: italic;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Barra lateral */
+        .barra-lateral {
+            flex: 1;
+            max-width: 300px;
+        }
+
+        /* Sección de noticias */
+        .seccion-noticias {
+            background-color: #555;
+            color: white;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .encabezado-noticias {
+            background-color: #444;
+            padding: 15px 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        /* Artículos de noticias */
+        .item-noticia {
+            padding: 15px 20px;
+            border-bottom: 1px solid #666;
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .item-noticia:last-child {
+            border-bottom: none;
+        }
+
+        .item-noticia img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
+
+        .contenido-noticia h4 {
+            font-size: 1em;
+            margin-bottom: 5px;
+            color: white;
+        }
+
+        .fecha-noticia {
+            font-size: 0.8em;
+            color: #b8d432;
+            margin-bottom: 5px;
+        }
+
+        .contenido-noticia p {
+            font-size: 0.85em;
+            color: #ccc;
+            line-height: 1.4;
+        }
+
+        /* Pie de página */
+        .pie {
+            background-color: #2c2c2c;
+            color: #ccc;
+            padding: 40px 0 20px;
+        }
+
+        .contenedor-pie {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        .columna-pie h4 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .columna-pie ul {
+            list-style: none;
+        }
+
+        .columna-pie ul li {
+            margin-bottom: 8px;
+        }
+
+        .columna-pie ul li a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: color 0.3s;
+        }
+
+        .columna-pie ul li a:hover {
+            color: #b8d432;
+        }
+
+        /* Copyright */
+        .copyright {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            font-size: 0.85em;
+            color: #888;
+        }
+
+        .copyright a {
+            color: #b8d432;
+            text-decoration: none;
+        }
+
+        /* Responsive design básico */
+        @media (max-width: 768px) {
+            .contenedor-encabezado {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .menu-navegacion {
+                gap: 15px;
+            }
+
+            .contenedor-hero {
+                flex-direction: column;
+            }
+
+            .contenedor-principal {
+                flex-direction: column;
+            }
+
+            .contenedor-pie {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado principal con logo y navegación -->
+    <header class="encabezado">
+        <div class="contenedor-encabezado">
+            <!-- Sección del logo -->
+            <div class="seccion-logo">
+                <h1>Nvidia</h1>
+                <p>Nvidia Corp</p>
+            </div>
+            
+            <!-- Menú de navegación -->
+            <nav>
+                <ul class="menu-navegacion">
+                    <li><a href="#" class="activo">Inicio</a></li>
+                    <li><a href="#">Servicios</a></li>
+                    <li><a href="#">Galería</a></li>
+                    <li><a href="#">Compañía</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Línea separadora verde -->
+    <div class="linea-separadora"></div>
+
+    <!-- Sección hero principal -->
+    <section class="seccion-hero">
+        <div class="contenedor-hero">
+            <!-- Imagen destacada -->
+            <div class="imagen-hero">
+                <img src="./Assets/Consignas/template_UCP_PLP3_AA RECUPERATORIO.jpg" alt="Diseño Objetivo">
+            </div>
+            
+            <!-- Contenido principal del hero -->
+            <div class="contenido-hero">
+                <h2>NVIDIA: Impulsando el Futuro de la Tecnología</h2>
+                <p>Para hacer mas interactivo y realista este trabajo decidí usar como ejemplo a Nvidia, principalmente debido a la paleta de colores y estética similar.</p>
+                <a href="#" class="boton-leer-mas">Leer Más</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contenedor principal con contenido y barra lateral -->
+    <div class="contenedor-principal">
+        <!-- Contenido principal -->
+        <main class="contenido-principal">
+            <h3>Bienvenido a la Web de Nvidia!</h3>
+
+            <p>NVIDIA presenta en su web las últimas innovaciones en <strong>inteligencia artificial, gráficos y computación de alto rendimiento</strong>, ofreciendo <strong>productos, soluciones y recursos</strong> para desarrolladores, empresas y usuarios en todo el mundo.</p>
+
+            <p>Además, el sitio reúne noticias, lanzamientos y herramientas interactivas que permiten explorar cómo la tecnología de NVIDIA está transformando sectores como los videojuegos, la ciencia, la industria automotriz y la nube, consolidándose como un referente global en innovación digital.</p>
+
+            <!-- Lista con viñetas -->
+            <ul class="lista-contenido">
+                <li>Item de la lista 1 para cumplir la consigna</li>
+                <li>Item de la lista 2 para cumplir la consigna</li>
+            </ul>
+            
+            <!-- Cita destacada -->
+            <div class="caja-cita">
+                “La misión de NVIDIA es impulsar el futuro de la computación acelerada, llevando la inteligencia artificial y los gráficos a nuevas fronteras.”
+            </div>
+        </main>
+
+        <!-- Barra lateral -->
+        <aside class="barra-lateral">
+            <div class="seccion-noticias">
+                <div class="encabezado-noticias">Últimas Noticias</div>
+                
+                <!-- noticia 1 -->
+                <div class="item-noticia">
+                    <img src="./Assets/Imagenes/NvidiaAI.jfif" alt="Nvidia IA">
+                    <div class="contenido-noticia">
+                        <div class="fecha-noticia">OCT 29, 2024</div>
+                        <h4>Nvidia y su impacto en la IA</h4>
+                        <p>NVIDIA se ha consolidado como uno de los actores clave en el desarrollo de la inteligencia artificial, gracias a sus potentes chips gráficos y plataformas especializadas que impulsan desde centros de datos hasta aplicaciones de consumo masivo.</p>
+                    </div>
+                </div>
+
+                <!-- noticia 2 -->
+                <div class="item-noticia">
+                    <img src="./Assets/Imagenes/nvidia proc.jfif" alt="Procesador Nvidia">
+                    <div class="contenido-noticia">
+                        <div class="fecha-noticia">OCT 28, 2024</div>
+                        <h4>NVIDIA lanza su nuevo procesador</h4>
+                        <p>El nuevo procesador de NVIDIA marca un salto en potencia y eficiencia, diseñado para acelerar aplicaciones de inteligencia artificial y cómputo avanzado.</p>
+                    </div>
+                </div>
+
+                <!-- noticia 3 -->
+                <div class="item-noticia">
+                    <img src="./Assets/Imagenes/gpus.jfif" alt="GPU de Nvidia">
+                    <div class="contenido-noticia">
+                        <div class="fecha-noticia">OCT 27, 2024</div>
+                        <h4>Nueva GPU de Nvidia</h4>
+                        <p>Nvidia esta orgulloso de presentar la nueva linea geforce rtx serie 50 de GPUs.</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Línea separadora verde -->
+    <div class="linea-separadora"></div>
+
+    <!-- Pie de página -->
+    <footer class="pie">
+        <div class="contenedor-pie">
+            <!-- Columna Servicios -->
+            <div class="columna-pie">
+                <h4>Servicios</h4>
+                <ul>
+                    <li><a href="#">APIs</a></li>
+                    <li><a href="#">Asesoramiento Personalizado</a></li>
+                    <li><a href="#">Desarrollo de Software</a></li>
+                    <li><a href="#">Consultoría en IA</a></li>
+                    <li><a href="#">Integración de Sistemas</a></li>
+                </ul>
+            </div>
+            
+            <!-- Columna Acerca de -->
+            <div class="columna-pie">
+                <h4>Acerca de</h4>
+                <ul>
+                    <li><a href="#">Nosotros</a></li>
+                    <li><a href="#">Nuestra Mision</a></li>
+                    <li><a href="#">Nuestra Visión</a></li>
+                    <li><a href="#">Nuestro Equipo</a></li>
+                    <li><a href="#">Nuestra Historia</a></li>
+                </ul>
+            </div>
+            
+            <!-- Columna Herramientas y plataformas -->
+            <div class="columna-pie">
+                <h4>Herramientas y plataformas</h4>
+                <ul>
+                    <li><a href="#">Simulación</a></li>
+                    <li><a href="#">Computación Acelerada</a></li>
+                    <li><a href="#">Entrenamiento de IAs</a></li>
+                    <li><a href="#">Cloud Development</a></li>
+                    <li><a href="#">Inteligencia Artificial</a></li>
+                </ul>
+            </div>
+            
+            <!-- Columna Contacto -->
+            <div class="columna-pie">
+                <h4>Contacto</h4>
+                <ul>
+                    <li>Nvidia@gmail.com</li>
+                    <li>3764-112233</li>
+                    <li><a href="https://www.instagram.com/nvidia">Instagram</a></li>
+                    <li><a href="https://x.com/NVIDIA">X</a></li>
+                    <li><a href="https://www.facebook.com/NVIDIA">Facebook</a></li>
+                </ul>
+            </div>
+            
+            <!-- Columna Socios -->
+            <div class="columna-pie">
+                <h4>Socios</h4>
+                <ul>
+                    <li><a href="#">Distribuidor de Servicios en la Nube</a></li>
+                    <li><a href="#">Proveedor de Centros de Datos</a></li>
+                    <li><a href="#">Distribuidor de Hardware</a></li>
+                    <li><a href="#">Asesor de Soluciones</a></li>
+                    <li><a href="#">Consultores</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Copyright -->
+        <div class="copyright">
+            <p>Paradigmas y lenguajes de programación III - Renzo Gómez Terrussi</p>
+        </div>
+    </footer>
+</body>
+</html>
